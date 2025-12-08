@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Open in Chrome</title>
+
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: #f4f4f4;
+        font-family: Arial;
+    }
+    button {
+        padding: 15px 25px;
+        font-size: 22px;
+        background: #0d6efd;
+        border: none;
+        border-radius: 8px;
+        color: #fff;
+        cursor: pointer;
+    }
+</style>
+
+</head>
+<body>
+
+<button onclick="openChrome()">Open Link</button>
+
+<script>
+function openChrome() {
+
+    let link = "https://m.apkpure.com/smart-control/com.example.smartcontrol";
+
+    // Android Chrome Intent open
+    let chromeIntent = `intent://${link.replace("https://", "").replace("http://","")}#Intent;scheme=https;package=com.android.chrome;end`;
+
+    /// First try open Chrome app
+    window.location.href = chromeIntent;
+
+    /// fallback normal browser
+    setTimeout(() => {
+        window.location.href = link;
+    }, 1200);
+}
+</script>
+
+</body>
+</html>
